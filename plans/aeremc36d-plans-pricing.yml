@@ -1,0 +1,29 @@
+generated: '2026-09-10'
+method: searched
+source: https://www.aerem.co/llms.txt
+plan_count: 0
+applicable: false
+summary: >-
+  Aerem publishes no API plans, because Aerem publishes no API. There is no developer portal, no
+  pricing page and no /pricing route on any Aerem host — https://www.aerem.co/pricing returns 404,
+  and the site's own llms.txt (a complete, provider-authored index of every public page) lists no
+  pricing, plans, developer or API section at all.
+note: >-
+  Aerem's commercial surface is a lending product, not a subscription API. Rooftop solar loans are
+  quoted per borrower against project cost, tenure and credit assessment, originated through
+  NetZero Finance Private Limited (the group's RBI-licensed NBFC), and priced in a sales/underwriting
+  conversation rather than on a published rate card. A solar loan EMI calculator is published at
+  https://www.aerem.co/solar-loan-calculator, but it estimates a borrower's instalment; it is not an
+  API price list. Recording plan_count 0 is the honest measurement here, not an omission.
+  NO `Plans` or `Pricing` pointer is emitted in apis.yml — a pointer would assert a published price
+  surface that does not exist.
+evidence:
+  - url: https://www.aerem.co/pricing
+    status: 404
+  - url: https://www.aerem.co/llms.txt
+    status: 200
+    note: provider-authored page index; contains no pricing, plans, developer or API section
+  - url: https://www.aerem.co/solar-loan-calculator
+    status: 200
+    note: borrower EMI estimator, not an API price list
+plans: []

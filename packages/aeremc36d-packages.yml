@@ -1,0 +1,160 @@
+generated: '2026-09-10'
+method: searched
+source: >-
+  Registry sweeps of npm (registry.npmjs.org search + per-package metadata), PyPI, RubyGems,
+  crates.io, NuGet, pkg.go.dev and Maven Central, plus the provider's own website, llms.txt and
+  sitemap. Ownership of the @aerem npm scope was confirmed against Aerem's own product names —
+  see the ownership note below.
+summary:
+  first_party_package_count: 5
+  first_party_api_sdk_count: 0
+  third_party_package_count: 0
+  note: >-
+    Aerem publishes five first-party packages under the @aerem npm scope, but NONE of them is a
+    client library for an Aerem API. They are internal engineering tooling — an AI coding harness,
+    a shared UI component library, an analytics helper and a "foundation engine" — published to the
+    public npm registry under an UNLICENSED / ISC license with no README-documented API surface.
+    Because no official API SDK exists, this repo emits `type: Packages` in apis.yml and
+    deliberately emits NO `SDKs` pointer: the ergonomics sdk_count check must read a genuine zero
+    here (STEP 2 of the enrichment contract).
+
+# OWNERSHIP NOTE (enrichment STEP 0c). The @aerem npm scope is owned by npm user `aerem`, and
+# @aerem/ai-harness declares homepage/repository https://bitbucket.org/AeremTech/aerem-ai-harness.
+# The Bitbucket workspace AeremTech ("Aerem Tech") is private, so the repo itself cannot be read.
+# The link to THIS Aerem — aerem.co, the Mumbai solar FinTech — is established from the published
+# README of @aerem/ai-harness, which uses `sunstore-core-service ⎇ feature/partner-dashboard-apis`
+# as its worked example. SunStore is Aerem's own solar-equipment marketplace product
+# (https://sunstore.co/, listed under "## Products / ### SunStore" in https://www.aerem.co/llms.txt),
+# and "Aerem Partner App" is Aerem's installer-facing product. No other company named Aerem was
+# found publishing to npm. If a later round finds evidence to the contrary, remove these entries
+# rather than re-attributing them.
+ownership:
+  confirmed: true
+  basis: >-
+    @aerem/ai-harness README names sunstore-core-service and a partner-dashboard-apis branch;
+    SunStore and the Aerem Partner App are Aerem's own products, named on aerem.co and in its
+    llms.txt.
+  evidence:
+    - url: https://registry.npmjs.org/@aerem/ai-harness
+      status: 200
+    - url: https://unpkg.com/@aerem/ai-harness@0.3.1/README.md
+      status: 200
+    - url: https://api.bitbucket.org/2.0/workspaces/AeremTech
+      status: 200
+      note: 'workspace "Aerem Tech" exists but is_private: true — repositories list returns 0'
+    - url: https://www.aerem.co/llms.txt
+      status: 200
+
+github_organization:
+  found: false
+  checked: '2026-09-10'
+  note: >-
+    No GitHub organization was located for Aerem. github.com/orgs/aerem, /aerem-tech, /aeremsolar
+    and /netzerofin all return 404, and a GitHub code search for "aerem solar" returns zero
+    repositories. Aerem's source control is a PRIVATE Bitbucket workspace (AeremTech). No
+    GitHubOrganization pointer is emitted.
+
+packages:
+  - language: javascript
+    registry: npm
+    name: '@aerem/ai-harness'
+    url: https://www.npmjs.com/package/@aerem/ai-harness
+    install: npm install -g @aerem/ai-harness
+    official: true
+    kind: internal-tooling
+    version: 0.3.1
+    published: '2026-09-03'
+    license: UNLICENSED
+    repository: https://bitbucket.org/AeremTech/aerem-ai-harness
+    description: >-
+      Claude Code extension for autonomous feature delivery — a CLI plus slash-command plugins that
+      scaffold .aerem/ state, drive a 13-phase feature pipeline, introspect brownfield repos and
+      orchestrate polyrepo workspaces. Internal engineering tooling, not an API client.
+    source: https://registry.npmjs.org/@aerem/ai-harness
+  - language: javascript
+    registry: npm
+    name: aerem-ai-harness-monorepo
+    url: https://www.npmjs.com/package/aerem-ai-harness-monorepo
+    install: npm install aerem-ai-harness-monorepo
+    official: true
+    kind: internal-tooling
+    version: 0.1.0
+    published: '2026-07-16'
+    license: null
+    repository: null
+    description: >-
+      "Org-wide Claude Code extension for autonomous feature delivery across Aerem repos" — the
+      monorepo root package for @aerem/ai-harness. Superseded in practice by the scoped package.
+    source: https://registry.npmjs.org/aerem-ai-harness-monorepo
+  - language: javascript
+    registry: npm
+    name: '@aerem/ui'
+    url: https://www.npmjs.com/package/@aerem/ui
+    install: npm install @aerem/ui
+    official: true
+    kind: internal-tooling
+    version: 1.0.0
+    published: '2026-08-06'
+    license: UNLICENSED
+    repository: null
+    description: >-
+      Cross-platform UI components for web (shadcn) and React Native. Consistent with Aerem's own
+      product set — a Webflow marketing site plus React Native customer and partner apps — but it
+      is a UI kit, not an API SDK.
+    source: https://registry.npmjs.org/@aerem/ui
+  - language: javascript
+    registry: npm
+    name: '@aerem/analytics'
+    url: https://www.npmjs.com/package/@aerem/analytics
+    install: npm install @aerem/analytics
+    official: true
+    kind: internal-tooling
+    version: 1.1.0-rc.1
+    published: '2025-12-09'
+    license: null
+    repository: null
+    description: >-
+      Unpublished-description analytics helper under the @aerem scope. Latest release is a release
+      candidate from 2025-12-09 and has not moved since — no stable 1.x line exists.
+    source: https://registry.npmjs.org/@aerem/analytics
+  - language: javascript
+    registry: npm
+    name: '@aerem/foundation-engine'
+    url: https://www.npmjs.com/package/@aerem/foundation-engine
+    install: npm install @aerem/foundation-engine
+    official: true
+    kind: internal-tooling
+    version: 1.0.0
+    published: '2025-12-19'
+    license: ISC
+    repository: null
+    description: >-
+      Undescribed first-party package under the @aerem scope. No README, homepage or repository is
+      declared in its registry metadata.
+    source: https://registry.npmjs.org/@aerem/foundation-engine
+
+third_party_packages: []
+
+registries_checked:
+  - registry: npm
+    url: https://registry.npmjs.org/-/v1/search?text=aerem
+    status: 200
+    result: 5 first-party packages found under the @aerem scope
+  - registry: pypi
+    url: https://pypi.org/pypi/aerem/json
+    status: 404
+    result: absent
+  - registry: rubygems
+    url: https://rubygems.org/api/v1/gems/aerem.json
+    status: 404
+    result: absent
+  - registry: crates.io
+    url: https://crates.io/api/v1/crates/aerem
+    status: 403
+    result: no crate (registry answers 403 to unauthenticated lookups of absent crates)
+  - registry: maven-central
+    result: no first-party artifact found
+  - registry: nuget
+    result: no first-party artifact found
+  - registry: pkg.go.dev
+    result: no first-party module found

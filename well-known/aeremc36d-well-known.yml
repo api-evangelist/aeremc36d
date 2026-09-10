@@ -1,0 +1,264 @@
+generated: '2026-09-10'
+method: probed
+source: live probes of /.well-known/ on every host Aerem is known to operate
+summary: 'Nothing is served. All 72 probes (9 named paths x 8 hosts) missed: the two Webflow marketing
+  hosts answer 404 with an "Invalid .well-known request" stub, and the six application hosts answer a
+  bare nginx 403 Forbidden for the entire /.well-known/ prefix. No security.txt, no api-catalog, no OIDC
+  or OAuth discovery, no ai-plugin.json, no A2A agent card, no aauth-resource.'
+pointer_basis: NO WellKnown pointer and NO SecurityTxt pointer are emitted in apis.yml. Not one path returned
+  a 200 carrying a real document, so a pointer would assert a surface Aerem does not serve. This file
+  records a measured absence, which is valid data on its own.
+false_positive_watch: The six application hosts return 403 for EVERY /.well-known/* path, including paths
+  that do not exist — that is a blanket nginx deny on the prefix, not an access-controlled document. netzerofin.com
+  additionally answers HTTP 200 with its SPA shell for arbitrary paths such as /openapi.json and /llms.txt;
+  those 200s are soft-404s and are recorded as misses everywhere in this repo.
+hosts:
+- host: https://www.aerem.co
+  note: Webflow-hosted marketing site; returns a 404 HTML stub reading "Invalid .well-known request" for
+    every path below.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    checked: '2026-09-10'
+- host: https://aerem.co
+  note: Webflow-hosted marketing site; returns a 404 HTML stub reading "Invalid .well-known request" for
+    every path below.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 404
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    checked: '2026-09-10'
+- host: https://partner.aerem.co
+  note: nginx returns 403 Forbidden for the whole /.well-known/ prefix — a blanket deny, not a gated document.
+    Next.js installer portal (Aerem Partner App web).
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    checked: '2026-09-10'
+- host: https://aeroc.aerem.co
+  note: nginx returns 403 Forbidden for the whole /.well-known/ prefix — a blanket deny, not a gated document.
+    Next.js AeROC solar remote-monitoring portal.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    checked: '2026-09-10'
+- host: https://auth.aerem.co
+  note: nginx returns 403 Forbidden for the whole /.well-known/ prefix — a blanket deny, not a gated document.
+    Internal auth service; GET / returns the plain-text string "Server is up and running" (HTTP 200).
+    No discovery document of any kind is exposed.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    checked: '2026-09-10'
+- host: https://admin.aerem.co
+  note: nginx returns 403 Forbidden for the whole /.well-known/ prefix — a blanket deny, not a gated document.
+    Internal admin console (Next.js); GET / returns 404.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    checked: '2026-09-10'
+- host: https://sunstore.co
+  note: nginx returns 403 Forbidden for the whole /.well-known/ prefix — a blanket deny, not a gated document.
+    Next.js SunStore B2B solar equipment marketplace.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    checked: '2026-09-10'
+- host: https://netzerofin.com
+  note: nginx returns 403 Forbidden for the whole /.well-known/ prefix — a blanket deny, not a gated document.
+    Marketing site for NetZero Finance, the group NBFC.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/openid-configuration
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/api-catalog
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent-card.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/agent.json
+    status: 403
+    checked: '2026-09-10'
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    checked: '2026-09-10'

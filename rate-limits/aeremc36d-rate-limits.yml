@@ -1,0 +1,25 @@
+generated: '2026-09-10'
+method: searched
+source: https://www.aerem.co/llms.txt
+limit_count: 0
+applicable: false
+summary: >-
+  No rate limits are documented, because no API is published. Contract discovery (enrichment STEP 0b)
+  probed every Aerem host for a REST OpenAPI, GraphQL SDL, MCP tools/list, SOAP WSDL, gRPC proto and
+  OGC surface and found none, so there is no request surface to which a limit could apply and no
+  response headers to record.
+note: >-
+  Recording limit_count 0 documents a measured absence. NO `RateLimits` pointer is emitted in
+  apis.yml — a pointer would assert a published runtime signal Aerem does not serve. If Aerem later
+  publishes a partner or EPC-integration API, this file is where the scope / window / limit / burst
+  and the X-RateLimit-* or RateLimit-* response headers belong.
+evidence:
+  - url: https://www.aerem.co/llms.txt
+    status: 200
+    note: provider-authored index of every public page; no developer, API or rate-limit section
+  - url: https://www.aerem.co/developers
+    status: 404
+  - url: https://www.aerem.co/api
+    status: 404
+headers: []
+limits: []

@@ -1,17 +1,37 @@
 aid: aeremc36d
-name: Aeremc36d
-description: 'Aeremc36d is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+name: Aerem
+description: >-
+  Aerem is a Mumbai-based "FinTech for CleanTech" group that finances, supplies and monitors
+  rooftop solar in India. The group comprises Aerem Solutions Private Limited, NetZero Finance
+  Private Limited — an RBI-licensed, solar-focused NBFC — and Sunstore Solar Private Limited.
+  Aerem underwrites collateral-free rooftop solar loans for MSMEs and homeowners, provides supply
+  chain finance to solar EPC installers, runs the SunStore B2B solar equipment marketplace, and
+  operates AeROC, an inverter-agnostic remote monitoring portal for installed plants. It also
+  ships two mobile products — the Aerem App for borrowers and the Aerem Partner App for installers
+  — and an AAA (Aerem Asset Assurance) quality-certification programme for EPCs. Aerem publishes a
+  machine-readable llms.txt and five first-party npm packages, but no public API, developer portal
+  or machine-readable API contract of any kind.
 url: https://raw.githubusercontent.com/api-evangelist/aeremc36d/refs/heads/main/apis.yml
+image: https://cdn.prod.website-files.com/659794dc6660d7bd9a22884d/69fc574bc9b0245e966fc0ed_754ed9b4063855dc515626105e5540d4_logo-new.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pass-local-v3
 specificationVersion: '0.20'
 created: '2026-09-10'
 modified: '2026-09-10'
+position: Producing
 tags:
 - Company
+- Financial Services
+- Lending
+- Energy
+- Solar
+- Clean Energy
+- Fintech
+- Marketplace
+- India
+- Non-Banking Financial Company
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +39,46 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/aeremc36d-domain-security.yml
 - type: Website
-  url: https://equityzen.com/company/aeremc36d
+  url: https://www.aerem.co/
+- type: Blog
+  url: https://www.aerem.co/blog
+- type: Support
+  url: https://www.aerem.co/contact
+- type: TermsOfService
+  url: https://www.aerem.co/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.aerem.co/privacy-policy
+- type: LLMsTxt
+  url: llms/aeremc36d-llms.txt
+- type: Packages
+  url: packages/aeremc36d-packages.yml
+x-enrichment:
+  date: '2026-09-10'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Aerem ships real software — a Webflow marketing site, Next.js installer and monitoring portals,
+    a B2B marketplace and two mobile apps — but exposes none of it to third parties: there is no
+    developer portal (https://www.aerem.co/developers returns 404), the provider's own llms.txt
+    indexes every public page and lists no API or developer section, /.well-known/ is a blanket
+    nginx 403 on all six application hosts, and the only backend that answers anonymously,
+    auth.aerem.co, returns the plain string "Server is up and running" with no discovery document.
+  evidence:
+    - url: https://www.aerem.co/developers
+      status: 404
+    - url: https://www.aerem.co/llms.txt
+      status: 200
+    - url: https://partner.aerem.co/openapi.json
+      status: 404
+    - url: https://auth.aerem.co/.well-known/openid-configuration
+      status: 403
+    - url: https://api.github.com/orgs/aerem
+      status: 404
+  checked: '2026-09-10'

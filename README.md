@@ -1,4 +1,4 @@
-# Aeremc36d
+# Aerem
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,5 +64,45 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aeremc36d is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://equityzen.com/company/aeremc36d
+## About Aerem
+
+Aerem is a Mumbai-based "FinTech for CleanTech" group that finances, supplies and monitors rooftop
+solar in India. The group comprises **Aerem Solutions Private Limited**, **NetZero Finance Private
+Limited** (an RBI-licensed, solar-focused NBFC) and **Sunstore Solar Private Limited**. It
+underwrites collateral-free rooftop solar loans for MSMEs and homeowners, provides supply chain
+finance to solar EPC installers, runs the **SunStore** B2B solar equipment marketplace, operates
+**AeROC** (an inverter-agnostic remote monitoring portal), ships the **Aerem App** and **Aerem
+Partner App**, and certifies installers through **AAA — Aerem Asset Assurance**.
+
+- Website: https://www.aerem.co/
+- Products: https://sunstore.co/ · https://aeroc.aerem.co/ · https://partner.aerem.co/
+- Group NBFC: https://netzerofin.com/
+
+## API surface
+
+**Aerem publishes no public API.** Contract discovery (enrichment STEP 0b) was run against every
+host the record knows — `www.aerem.co`, `aerem.co`, `partner.aerem.co`, `aeroc.aerem.co`,
+`auth.aerem.co`, `admin.aerem.co`, `sunstore.co` and `netzerofin.com` — probing for a REST OpenAPI
+(`/openapi.json`, `/openapi.yaml`, `/swagger.json`, `/v1/openapi.json`, `/api-docs`, `/docs`,
+`/redoc`, `/v3/api-docs`, `/api/*`), a GraphQL endpoint, an MCP `tools/list` manifest, an A2A agent
+card at both `/.well-known/agent-card.json` and the legacy `/.well-known/agent.json`, and the full
+`/.well-known/` document set. Every probe missed. There is no developer portal
+(`/developers` → 404), no API section (`/api` → 404), no pricing page (`/pricing` → 404), no GitHub
+organization, and no Postman workspace. Aerem's source control is a **private** Bitbucket workspace
+(`AeremTech`).
+
+Two real, provider-published artifacts were found and captured:
+
+| Artifact | Method | Source |
+|---|---|---|
+| `llms/aeremc36d-llms.txt` | searched (verbatim) | https://www.aerem.co/llms.txt (HTTP 200) |
+| `packages/aeremc36d-packages.yml` | searched | 5 first-party npm packages under the `@aerem` scope |
+
+The `@aerem` npm packages are **internal engineering tooling** (an AI coding harness, a UI component
+library, an analytics helper, a foundation engine) — not client libraries for an Aerem API — so this
+profile deliberately emits `type: Packages` and **no** `SDKs` pointer.
+
+Recorded absences, each with the HTTP status observed: `well-known/aeremc36d-well-known.yml`
+(72 probes, 0 hits), `plans/aeremc36d-plans-pricing.yml` (`plan_count: 0`),
+`rate-limits/aeremc36d-rate-limits.yml` (`limit_count: 0`). Domain security was probed into
+`security/aeremc36d-domain-security.yml`.
